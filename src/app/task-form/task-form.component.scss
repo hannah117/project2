@@ -1,0 +1,22 @@
+form, div {
+    max-width: 40rem;  
+    position: relative;
+    margin: 3rem 0rem;
+    align-items: center;
+}
+
+mat-form-field {
+    display: inline;
+    padding-bottom: 0;
+}
+
+
+button {
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+.form-buttons{
+    text-align: center;
+    margin: 0;
+}

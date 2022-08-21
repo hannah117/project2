@@ -1,0 +1,48 @@
+<div >
+    <mat-accordion *ngFor="let task of tasks">
+        <mat-expansion-panel hideToggle 
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+        (click)="onSelect(task)"
+        *ngIf="display(task)"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{task.title}} 
+            </mat-panel-title>
+            <mat-panel-description >
+                {{task.dueDate}}
+            </mat-panel-description>
+            <mat-icon class="edit"  (click)="onEdit(task)" type="button">edit</mat-icon>
+            <mat-icon class="delete"  (click)="onDelete(task)" type="button">delete</mat-icon>
+          </mat-expansion-panel-header>
+          <p >{{task.description}}</p>
+        </mat-expansion-panel>
+        <div  *ngIf="!display(task)">
+          <form>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Title</mat-label>
+              <input matInput placeholder="Ex. Task 1" value={{task.title}}>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker"  value={{task.dueDate}}>
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Description</mat-label>
+              <textarea matInput placeholder="Ex. Describe all the steps of the tasks and any blockers" value={{task.description}}></textarea>
+            </mat-form-field>
+            <div class="form-buttons">
+              <button mat-raised-button>Cancel</button>
+              <button mat-raised-button color='primary' text-color='white'>Save</button>
+            </div>
+          </form>
+        </div>
+
+    </mat-accordion>
+</div>
+
+
